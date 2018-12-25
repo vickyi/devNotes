@@ -1,0 +1,1 @@
+[IBM-Spark 实战，第 1 部分: 使用 Scala 语言开发 Spark 应用程序](https://www.ibm.com/developerworks/cn/opensource/os-cn-spark-practice1/)
