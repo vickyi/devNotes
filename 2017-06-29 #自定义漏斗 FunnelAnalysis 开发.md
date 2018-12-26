@@ -1,5 +1,6 @@
 
 ## 打包
+
 ```
 ## login to ops001
 scp /data/jenkins_workspace/workspace/FunnelAnalysis/target/FunnelAnalysis-1.0-SNAPSHOT.jar hadoop@spark001.abcplus:/data/users/vk/FunnelAnalysis/
@@ -10,7 +11,8 @@ scp /data/jenkins_workspace/workspace/FunnelAnalysis/target/FunnelAnalysis-1.0-S
 ```
 
 ## 运行
-```
+
+```bash
 ## login to spark001
 ## 传两个参数：日期和运行方式
 ##运行方式有3种：hiveF、dump2mysql、hiveDump
@@ -28,7 +30,8 @@ java -cp ./FunnelAnalysis-1.0-SNAPSHOT.jar com.abcplus.MySqlConn 1
 ```
 
 ## 配置 dump propert文件
-```
+
+```sql
 overwrite=true
 task.name=test.rpt_funnel_data
 method=sqoop
@@ -80,7 +83,8 @@ CREATE TABLE `rpt_funnel_data` (
 ```
 
 ## hive 表
-```
+
+``` sql
 use test;
 create table if not exists fct_funnel
 (
