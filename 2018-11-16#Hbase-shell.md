@@ -1,3 +1,5 @@
+# Hbase shell
+
 ## ns_ods:data_im_session_details
 
 ## hive sql
@@ -32,6 +34,7 @@ scan 'ns_ods:data_im_session_details', {LIMIT => 100}
 ```
 
 ## ns_ods:data_client_details
+
 ```shell
 scan 'ns_ods:data_client_details', {LIMIT => 100}
 -- 暂时没有数据
