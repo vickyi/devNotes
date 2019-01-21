@@ -1,0 +1,36 @@
+# hive多分区写入
+
+```sql
+-- 多分区写入
+set mapred.max.split.size=256000000;
+set hive.exec.dynamic.partition.mode=nonstrict;
+set hive.exec.max.dynamic.partitions=800;
+set hive.exec.max.dynamic.partitions.pernode=800;
+
+INSERT overwrite table ods.im_session_content_record partition(`date`)
+select
+-999 as source_type,
+a.cid,
+a.sid,
+a.vccid,
+a.userid,
+current_timestamp as bi_update_datetime,
+to_date(from_unixtime(cast(cont.createTime as int))) as `date`
+from ods.im_session_content a LATERAL VIEW explode(content) bb AS cont
+where from_unixtime(cast(cont.createTime as int)) < '2018-11-25'
+;
+
+INSERT overwrite table ods.im_session_content_record partition(`date`)
+select
+-999 as source_type,
+a.cid,
+a.sid,
+a.vccid,
+a.userid,
+current_timestamp as bi_update_datetime,
+to_date(from_unixtime(cast(cont.createTime as int))) as `date`
+from ods.im_session_content a LATERAL VIEW explode(content) bb AS cont
+where from_unixtime(cast(cont.createTime as int)) >= '2018-11-25'
+and from_unixtime(cast(cont.createTime as int)) < '2018-12-02'
+;
+```
