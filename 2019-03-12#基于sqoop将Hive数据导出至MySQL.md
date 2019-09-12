@@ -2,8 +2,8 @@
 
 该方式下需要先将数据从Hive表导出到HDFS，再从HDFS将数据导入到RDBMS。虽然比直接导出多了一步操作，但是可以实现对数据的更精准的操作，特别是在从Hive表导出到HDFS时，可以进一步对数据进行字段筛选、字段加工、数据过滤操作，从而使得HDFS上的数据更“接近”或等于将来实际要导入RDBMS表的数据。在从HDFS导入RDBMS时，也是将一个“小数据集”与目标表中的数据做对比，会提高导出速度。
 ![]()
-> 作者：汀桦坞，原文：https://blog.csdn.net/wiborgite/article/details/80991567
 
+> 作者：汀桦坞，原文：https://blog.csdn.net/wiborgite/article/details/80991567
 
 ## 全量导出
 
@@ -21,6 +21,7 @@ sqoop export --connectjdbc:mysql://localhost:3306/wht --username root --password
 ```
 
 ## 写入更新
+
 ```sh
 # 全量导出
 # HQL示例：
