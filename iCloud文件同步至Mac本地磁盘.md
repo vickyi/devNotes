@@ -26,3 +26,5 @@
 如果你的照片都在手机和电脑上，就可以关闭此文章，立即打电话给 Apple 联系退款了！
 
 以后的备份直接将 iphone 插在 Mac 上面导入即可。
+
+![](https://raw.githubusercontent.com/vickyi/artHub/master/gaoyuanyuan.jpeg)
