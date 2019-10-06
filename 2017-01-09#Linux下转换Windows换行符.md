@@ -6,16 +6,19 @@ Windows下是CRLF(\r\n或0d0a)，Linux下是LF(\n或0a)。在Linux下有时会�
 Linux自带的sed命令一样可以完成相同的任务。
 
 ### 单个的文件装换
-```
+
+```shell
 sed -i 's/\r//'  filename
 ```
 
 ### 批量的文件装换
-```
+
+```shell
 sed -i 's/\r//'  filename1 filename2 ...
 ```
 或
-```
+
+```shell
 find conf/  -name "*.*" |xargs sed -i 's/\r//'
 ```
 
