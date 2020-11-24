@@ -62,11 +62,20 @@ fi
 
 echo "===>> 当前sql: $sqlfile, 执行日期: $dt"
 
+spark_conf_path=$SPARK_HOME/conf
+ip=`ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"`
+jobname="${sqlfile##*/}_$dt"
+echo $jobname
+
 spark-sql \
+--driver-java-options "-Dlog4j.debug -Dlog4j.configuration=file://$spark_conf_path/log4j.properties" \
 --queue bi \
---name dw_etl_$dt \
--d date=$dt \
--f $sqlfile
+--master yarn \
+--name dw_etl_$jobname \
+--conf spark.driver.host=$ip \
+--conf spark.yarn.jars=hdfs://emr-header-1.cluster-70637:9000/user/hadoop/spark_jars/* \
+-f $sqlfile \
+-d date=$dt
 
 ##-i hdfs://emr-header-1.cluster-70637:9000/dw/hive_udf/hive_udf_init.hql
 
